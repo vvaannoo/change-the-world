@@ -19,6 +19,7 @@ function App() {
   const [language, setLanguage] = useState("ge");
   const [name, setName] = useState("");
   const t = (key: string) => i18n[language][key] || key;
+  const backgroundImageUrl = `./template-${language}.png`;
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLanguage(e.target.value);
@@ -27,10 +28,6 @@ function App() {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
-  let backgroundImageUrl = "./template.jpg";
-  if (language === "en") {
-    backgroundImageUrl = "./template-en.jpg";
-  }
 
   return (
     <Container className="py-4 text-center">
@@ -78,7 +75,7 @@ function App() {
       </Form>
       <CanvasImageGenerator
         width={1000}
-        height={700}
+        height={707}
         name={name}
         backgroundImageUrl={backgroundImageUrl}
         downloadButtonLabel={t("download")}

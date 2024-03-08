@@ -9,6 +9,15 @@ type Props = {
   downloadButtonLabel?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
+const pad = (n: number) => (n < 10 ? `0${n}` : n);
+const getCurrentDate = () => {
+  const date = new Date();
+  const d = pad(date.getDate());
+  const m = pad(date.getMonth() + 1);
+  const y = date.getFullYear();
+  return `${d}.${m}.${y}`;
+}
+
 const CanvasImageGenerator = ({
   width,
   height,
@@ -19,7 +28,21 @@ const CanvasImageGenerator = ({
   style,
 }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  console.log(name, backgroundImageUrl);
+
+  const drawName = (ctx: CanvasRenderingContext2D) => {
+    ctx.fillStyle = "grey";
+    ctx.font = "bold 32px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(name, width / 2, 256);
+  }
+
+  const drawDate = (ctx: CanvasRenderingContext2D) => {
+    ctx.fillStyle = "black";
+    ctx.font = "20px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(getCurrentDate(), width - 160, height - 80);
+  }
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -31,19 +54,14 @@ const CanvasImageGenerator = ({
     backgroundImage.src = backgroundImageUrl;
 
     backgroundImage.onload = () => {
-      console.log("loading image...");
       context.drawImage(backgroundImage, 0, 0, width, height);
-      context.fillStyle = "black";
-      context.font = "32px Arial";
-      context.textAlign = "center";
-      context.fillText(name, width / 2, height / 2);
-
+      drawName(context);
+      drawDate(context);
     };
   }, [width, height, name, backgroundImageUrl]);
 
   const handleDownload = () => {
     const canvas = canvasRef.current;
-
     if (!canvas) return;
 
     const imageUrl = canvas.toDataURL("image/png");
