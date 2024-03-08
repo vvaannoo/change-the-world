@@ -59,7 +59,7 @@ const CanvasImageGenerator = ({
         ref={canvasRef}
         width={width}
         height={height}
-        className="d-block m-auto rounded shadow mb-4"
+        className="d-none d-lg-block m-auto rounded shadow mb-4"
       />
       <Button disabled={!name} onClick={handleDownload}>
         {downloadButtonLabel || "Download"}
