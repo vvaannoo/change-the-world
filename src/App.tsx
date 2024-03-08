@@ -44,7 +44,7 @@ function App() {
               checked={language === "ge"}
               onChange={handleLanguageChange}
             />
-            <label className="btn btn-lg btn-outline-danger" htmlFor="ge">
+            <label className="btn btn-lg btn-outline-primary" htmlFor="ge">
               ქართული
             </label>
             <input

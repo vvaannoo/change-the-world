@@ -30,14 +30,14 @@ const CanvasImageGenerator = ({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const drawName = (ctx: CanvasRenderingContext2D) => {
-    ctx.fillStyle = "grey";
+    ctx.fillStyle = "rgb(50,50,50)";
     ctx.font = "bold 32px Arial";
     ctx.textAlign = "center";
     ctx.fillText(name, width / 2, 256);
   }
 
   const drawDate = (ctx: CanvasRenderingContext2D) => {
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "rgb(50,50,50)";
     ctx.font = "20px Arial";
     ctx.textAlign = "center";
     ctx.fillText(getCurrentDate(), width - 160, height - 80);
