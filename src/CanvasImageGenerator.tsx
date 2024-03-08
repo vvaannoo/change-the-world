@@ -33,14 +33,14 @@ const CanvasImageGenerator = ({
     ctx.fillStyle = "rgb(50,50,50)";
     ctx.font = "bold 32px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(name, width / 2, 256);
+    ctx.fillText(name, width / 2 + 13, 256);
   }
 
   const drawDate = (ctx: CanvasRenderingContext2D) => {
     ctx.fillStyle = "rgb(50,50,50)";
     ctx.font = "20px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(getCurrentDate(), width - 160, height - 80);
+    ctx.fillText(getCurrentDate(), width - 163, height - 80);
   }
 
   useEffect(() => {
