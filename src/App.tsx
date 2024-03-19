@@ -19,7 +19,7 @@ function App() {
   const [language, setLanguage] = useState("ge");
   const [name, setName] = useState("");
   const t = (key: string) => i18n[language][key] || key;
-  const backgroundImageUrl = `./template-${language}.png`;
+  const backgroundImageUrl = `./template-${language}.png?v1`;
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLanguage(e.target.value);
